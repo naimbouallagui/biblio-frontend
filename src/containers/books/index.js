@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { listBooks, deleteBooks } from "../store/actions/book/actionsBook";
+import { listBooks, deleteBooks } from "../../store/actions/book/actionsBook";
+import { Link } from "react-router-dom";
 
 const Home = ({ books, getAllBooks, deleteBook }) => {
-
   const fieldDeleteItem = id => {
     deleteBook(id);
   };
@@ -58,14 +59,11 @@ const Home = ({ books, getAllBooks, deleteBook }) => {
                       <td>{item.status}</td>
                       <td>{item.authors[0]}</td>
                       <td>
-                        <button
-                          className="btn btn-danger"
-                          type="button"
-                          onClick={() => fieldDeleteItem(item._id)}
-                        >
+                        <Link  to={"/admin/book/edit/" + item._id}>Edit</Link>
+                        {" | "}
+                        <a  type="button" className="text-danger" onClick={() => fieldDeleteItem(item._id)}>
                           Delete
-                        </button>
-                        <button className="btn btn-primary m-2">Edit</button>
+                        </a>
                       </td>
                     </tr>
                   ))}

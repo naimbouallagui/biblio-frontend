@@ -1,4 +1,8 @@
-import { LIST_BOOKS, DELETE_BOOK } from "../actions/book/typesBook";
+import {
+  LIST_BOOKS,
+  DELETE_BOOK,
+  DETAILS_BOOK
+} from "../actions/book/typesBook";
 
 const BooksReducer = (stateBook = [], action) => {
   switch (action.type) {
@@ -7,6 +11,8 @@ const BooksReducer = (stateBook = [], action) => {
     case DELETE_BOOK:
       const book = stateBook.filter(item => item._id !== action.payload.id);
       return book;
+    case DETAILS_BOOK:
+      return action.payload.data;
     default:
       return stateBook;
   }

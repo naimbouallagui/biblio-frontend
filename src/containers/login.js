@@ -31,7 +31,7 @@ const Login = ({ login, loginResponse }) => {
   };
 
   if (loginResponse && loginResponse.error === false)
-    return <Redirect to="/admin/books" />;
+    return <Redirect to="/admin" />;
   return (
     <div className="container">
       <div className="row justify-content-center">

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { registerUser } from "../store/actions/actionsUser";
+import { registerUser } from "../../store/actions/actionsUser";
 
-const Register = (props) => {
+const AddUser = (props) => {
   const [user, setUser] = useState({
     fullname: "",
     username: "",
@@ -20,6 +20,7 @@ const Register = (props) => {
     e.preventDefault();
     props.addUser(user);
   };
+  
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -79,11 +80,6 @@ const Register = (props) => {
                 </div>
               </form>
             </div>
-            <div className="card-footer text-center">
-              <div className="small">
-                <a href="register.html">Have an account? Go to login</a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -98,4 +94,4 @@ function mapDispatchToProps(dispatch) {
     }
   };
 }
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(null, mapDispatchToProps)(AddUser);

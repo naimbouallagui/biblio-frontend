@@ -1,12 +1,16 @@
 import React from "react";
-import Register from "./containers/register";
+import AddUser from "./containers/users/add";
 import { Provider } from "react-redux";
 import store from "./store";
-import Dashboard from "./containers/dashboard";
+import Dashboard from "./components/dashboard";
 import Login from "./containers/login";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from "./containers/home";
-import Users from "./components/users";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./containers/books";
+import Users from "./containers/users";
+import EditBook from "./containers/books/edit";
+import Books from "./containers/books/lists";
+import Details from "./containers/books/details";
+import DetailsUser from "./containers/users/detailsuser";
 
 function App() {
   return (
@@ -18,15 +22,27 @@ function App() {
               <Login />
             </div>
           </Route>
+          <Route exact path="/">
+            <Books />
+          </Route>
+          <Route exact path="/book/details/:id">
+            <Details />
+          </Route>
           <Dashboard>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/">
+            <Route exact path="/admin">
               <Home />
             </Route>
-            <Route exact path="/users">
+            <Route exact path="/admin/user">
               <Users />
+            </Route>
+            <Route exact path="/admin/user/add">
+              <AddUser />
+            </Route>
+            <Route exact path="/admin/book/edit/:id">
+              <EditBook />
+            </Route>
+            <Route exact path="/user/details/:id">
+              <DetailsUser />
             </Route>
           </Dashboard>
           <Route component={NoMatchPage} />
